@@ -1,0 +1,60 @@
+{
+  "name": "DragoDocs AI",
+  "short_name": "DragoDocs",
+  "description": "Aplicación de Android para escanear, organizar, convertir, comprimir, firmar y compartir documentos con inteligencia artificial.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#050507",
+  "theme_color": "#050507",
+  "orientation": "portrait-primary",
+  "lang": "es",
+  "dir": "ltr",
+  "scope": "/",
+  "categories": ["productivity", "utilities", "business"],
+  "icons": [
+    {
+      "src": "assets/images/favicon-16x16.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    },
+    {
+      "src": "assets/images/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Características",
+      "short_name": "Características",
+      "description": "Descubre las funciones de DragoDocs AI",
+      "url": "/#features",
+      "icons": [{ "src": "assets/images/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Soporte",
+      "short_name": "Soporte",
+      "description": "Centro de ayuda de DragoDocs AI",
+      "url": "/support.html",
+      "icons": [{ "src": "assets/images/favicon-32x32.png", "sizes": "32x32" }]
+    },
+    {
+      "name": "Contacto",
+      "short_name": "Contacto",
+      "description": "Contacta al equipo de DragoDocs AI",
+      "url": "/contact.html",
+      "icons": [{ "src": "assets/images/favicon-32x32.png", "sizes": "32x32" }]
+    }
+  ]
+}
