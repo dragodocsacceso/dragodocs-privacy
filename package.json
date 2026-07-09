@@ -1,0 +1,27 @@
+{
+  "name": "dragodocsai-website",
+  "version": "1.0.0",
+  "description": "Official website for DragoDocs AI — built for GitHub Pages with HTML5, CSS3 and vanilla JavaScript.",
+  "private": true,
+  "scripts": {
+    "generate:assets": "node scripts/generate-assets.js"
+  },
+  "keywords": [
+    "dragodocs",
+    "ai",
+    "documents",
+    "pdf",
+    "ocr",
+    "gemini",
+    "website",
+    "github-pages"
+  ],
+  "author": "DragoDocs AI Team <guadalupejesus117@gmail.com>",
+  "license": "UNLICENSED",
+  "type": "commonjs",
+  "devDependencies": {
+    "adm-zip": "^0.5.18",
+    "sharp": "^0.35.3",
+    "to-ico": "^1.1.5"
+  }
+}
