@@ -1,242 +1,39 @@
 /* =========================================================
-   DragoDocs AI — Animations
-   Keyframes and animation utility classes
+   DragoDocs AI — Animations (simplified)
+   Minimal, subtle transitions. No heavy motion effects.
    ========================================================= */
 
 /* ---------------------------------------------------------
    Keyframes
    --------------------------------------------------------- */
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-12px); }
-}
-
-@keyframes float-glow {
-  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.45; }
-  33% { transform: translate(30px, -30px) scale(1.05); opacity: 0.5; }
-  66% { transform: translate(-20px, 20px) scale(0.95); opacity: 0.4; }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.18; transform: scale(1); }
-  50% { opacity: 0.28; transform: scale(1.1); }
-}
-
-@keyframes pulse-dot {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(0.85); }
-}
-
-@keyframes grid-move {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(60px); }
-}
-
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
-  40% { transform: translateX(-50%) translateY(-8px); }
-  60% { transform: translateX(-50%) translateY(-4px); }
-}
-
-@keyframes orbit-rotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
 @keyframes fade-in {
   from { opacity: 0; }
   to { opacity: 1; }
 }
 
 @keyframes fade-in-up {
-  from { opacity: 0; transform: translateY(30px); }
+  from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes fade-in-down {
-  from { opacity: 0; transform: translateY(-10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes slide-in-right {
-  from { opacity: 0; transform: translateX(30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes slide-in-left {
-  from { opacity: 0; transform: translateX(-30px); }
-  to { opacity: 1; transform: translateX(0); }
-}
-
-@keyframes scale-in {
-  from { opacity: 0; transform: scale(0.95); }
-  to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes scale-pulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); }
-}
-
-@keyframes rotate-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-@keyframes typing {
-  0%, 80%, 100% { transform: scale(0); opacity: 0.5; }
-  40% { transform: scale(1); opacity: 1; }
-}
-
-@keyframes message-pop {
-  from { opacity: 0; transform: translateY(10px) scale(0.95); }
-  to { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-@keyframes neon-flicker {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.85; }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
 }
 
 /* ---------------------------------------------------------
    Animation Utilities
    --------------------------------------------------------- */
-.animate-float { animation: float 6s ease-in-out infinite; }
-.animate-float-glow { animation: float-glow 12s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 8s ease-in-out infinite; }
-.animate-pulse-dot { animation: pulse-dot 2s ease-in-out infinite; }
-.animate-grid-move { animation: grid-move 20s linear infinite; }
-.animate-bounce { animation: bounce 2s infinite; }
-.animate-orbit { animation: orbit-rotate 20s linear infinite; }
-.animate-fade-in { animation: fade-in 0.6s ease-out forwards; }
-.animate-fade-in-up { animation: fade-in-up 0.6s ease-out forwards; }
-.animate-fade-in-down { animation: fade-in-down 0.4s ease-out forwards; }
-.animate-slide-in-right { animation: slide-in-right 0.6s ease-out forwards; }
-.animate-slide-in-left { animation: slide-in-left 0.6s ease-out forwards; }
-.animate-scale-in { animation: scale-in 0.5s ease-out forwards; }
-.animate-scale-pulse { animation: scale-pulse 2s ease-in-out infinite; }
-.animate-rotate-slow { animation: rotate-slow 20s linear infinite; }
-.animate-shimmer { animation: shimmer 4s infinite; }
-.animate-spin { animation: spin 0.8s linear infinite; }
-.animate-neon { animation: neon-flicker 3s ease-in-out infinite; }
-.animate-gradient { background-size: 200% 200%; animation: gradient-shift 8s ease infinite; }
+.animate-fade-in { animation: fade-in 0.5s ease-out forwards; }
+.animate-fade-in-up { animation: fade-in-up 0.5s ease-out forwards; }
 
 /* ---------------------------------------------------------
    Scroll Reveal
    --------------------------------------------------------- */
 .scroll-reveal {
   opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
 }
 
 .scroll-reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-}
-
-.scroll-reveal-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.scroll-reveal-left.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.scroll-reveal-right {
-  opacity: 0;
-  transform: translateX(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.scroll-reveal-right.is-visible {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-.scroll-reveal-scale {
-  opacity: 0;
-  transform: scale(0.9);
-  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-.scroll-reveal-scale.is-visible {
-  opacity: 1;
-  transform: scale(1);
-}
-
-/* Stagger delays */
-.scroll-reveal:nth-child(1) { transition-delay: 0ms; }
-.scroll-reveal:nth-child(2) { transition-delay: 80ms; }
-.scroll-reveal:nth-child(3) { transition-delay: 160ms; }
-.scroll-reveal:nth-child(4) { transition-delay: 240ms; }
-.scroll-reveal:nth-child(5) { transition-delay: 320ms; }
-.scroll-reveal:nth-child(6) { transition-delay: 400ms; }
-.scroll-reveal:nth-child(7) { transition-delay: 480ms; }
-.scroll-reveal:nth-child(8) { transition-delay: 560ms; }
-.scroll-reveal:nth-child(9) { transition-delay: 640ms; }
-.scroll-reveal:nth-child(10) { transition-delay: 720ms; }
-.scroll-reveal:nth-child(11) { transition-delay: 800ms; }
-.scroll-reveal:nth-child(12) { transition-delay: 880ms; }
-
-/* ---------------------------------------------------------
-   Hover Effects
-   --------------------------------------------------------- */
-.hover-lift {
-  transition: transform var(--transition-base), box-shadow var(--transition-base);
-}
-
-.hover-lift:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
-}
-
-.hover-glow:hover {
-  box-shadow: 0 0 30px rgba(0, 240, 255, 0.15);
-}
-
-.hover-scale:hover {
-  transform: scale(1.05);
-}
-
-/* ---------------------------------------------------------
-   Gradient Text Animation
-   --------------------------------------------------------- */
-.gradient-text-animated {
-  background: var(--gradient-text);
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  animation: gradient-shift 4s linear infinite;
-}
-
-/* ---------------------------------------------------------
-   Loading Skeleton
-   --------------------------------------------------------- */
-.skeleton {
-  background: linear-gradient(90deg, var(--color-surface) 25%, var(--color-surface-light) 50%, var(--color-surface) 75%);
-  background-size: 200% 100%;
-  border-radius: var(--radius-md);
-  animation: shimmer 1.5s infinite;
 }
 
 /* ---------------------------------------------------------
@@ -249,10 +46,7 @@
     transition-duration: 0.01ms !important;
   }
 
-  .scroll-reveal,
-  .scroll-reveal-left,
-  .scroll-reveal-right,
-  .scroll-reveal-scale {
+  .scroll-reveal {
     opacity: 1;
     transform: none;
   }

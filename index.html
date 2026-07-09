@@ -103,20 +103,15 @@
   </nav>
 
   <header id="hero" class="hero" role="banner">
-    <div class="hero-bg" aria-hidden="true">
-      <div class="hero-glow hero-glow-1 animate-float-glow"></div>
-      <div class="hero-glow hero-glow-2 animate-float-glow" style="animation-delay: -6s;"></div>
-      <div class="hero-grid animate-grid-move"></div>
-      <canvas id="particles-canvas" aria-hidden="true"></canvas>
-    </div>
+    <div class="hero-bg" aria-hidden="true"></div>
 
     <div class="hero-container">
       <div class="hero-badge scroll-reveal">
-        <span class="badge-dot animate-pulse-dot"></span>
+        <span class="badge-dot"></span>
         Impulsada por Gemini AI
       </div>
 
-      <div class="hero-logo scroll-reveal animate-float">
+      <div class="hero-logo scroll-reveal">
         <img src="assets/images/logo.png" alt="DragoDocs AI" width="180" height="180" loading="eager">
       </div>
 
@@ -143,11 +138,21 @@
       </div>
     </div>
 
-    <div class="hero-scroll animate-bounce" aria-hidden="true">
+    <div class="hero-scroll" aria-hidden="true">
       <span class="hero-scroll-text">Descubre más</span>
       <span class="hero-scroll-line"></span>
     </div>
   </header>
+
+  <section id="ai-warning" class="section" style="padding-top: 0;" aria-labelledby="ai-warning-title">
+    <div class="container container-narrow">
+      <div class="warning-banner scroll-reveal" role="alert">
+        <h2 id="ai-warning-title" class="warning-title">Aviso sobre inteligencia artificial</h2>
+        <p>Cuando uses funciones de IA, el contenido de tus documentos puede enviarse a los servidores de Google/Firebase (Gemini) para su procesamiento. Eso depende de Firebase/Google, no de nosotros. Antes de usar la IA, la app te pedirá tu consentimiento.</p>
+        <p>La mayoría de las funciones de DragoDocs AI funcionan de forma local en tu dispositivo, sin necesidad de cuenta y sin enviar tus archivos a nuestros servidores.</p>
+      </div>
+    </div>
+  </section>
 
   <main id="main-content">
     <section id="features" class="section" aria-labelledby="features-title">
@@ -175,7 +180,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20 2H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H8V4h12v12zM4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6z"/></svg>
             </div>
             <h3 class="feature-title">Editor PDF</h3>
-            <p class="feature-description">Crea, organiza, combina y edita archivos PDF con un motor nativo optimizado para Android.</p>
+            <p class="feature-description">Crea, organiza, combina y edita archivos PDF de forma local con un motor nativo para Android.</p>
           </article>
 
           <article class="feature-card glass scroll-reveal">
@@ -207,7 +212,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </div>
             <h3 class="feature-title">OCR</h3>
-            <p class="feature-description">Extrae texto de imágenes y documentos escaneados utilizando ML Kit y OpenCV.</p>
+            <p class="feature-description">Extrae texto de imágenes y documentos escaneados de forma local utilizando ML Kit y OpenCV.</p>
           </article>
 
           <article class="feature-card glass scroll-reveal">
@@ -223,7 +228,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.96 1.68 5.74 4.19l.37 1.18 1.24.11C20.78 11.68 22 12.96 22 14.5c0 1.93-1.57 3.5-3.5 3.5z"/></svg>
             </div>
             <h3 class="feature-title">Conversión</h3>
-            <p class="feature-description">Transforma documentos entre diferentes formatos manteniendo la estructura y el contenido.</p>
+            <p class="feature-description">Transforma documentos entre diferentes formatos de forma local manteniendo la estructura y el contenido.</p>
           </article>
 
           <article class="feature-card glass scroll-reveal">
@@ -231,7 +236,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.48 12.35c-1.57-4.08-7.16-4.3-5.81-10.29 4.29 1.81 7.27 6.03 7.27 10.94 0 .69-.07 1.36-.19 2.01-.55-1.32-1.02-2.65-1.27-2.66zM17 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM4.27 18C3.56 18 3 17.44 3 16.73c0-.3.12-.58.32-.79C3.61 15.68 4.24 15 5 15s1.39.68 1.68 1.05c.2.21.32.49.32.79 0 .71-.56 1.27-1.27 1.27H4.27zM12 4c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
             </div>
             <h3 class="feature-title">Compresión</h3>
-            <p class="feature-description">Reduce el tamaño de archivos PDF e imágenes para facilitar el almacenamiento y la compartición.</p>
+            <p class="feature-description">Reduce el tamaño de archivos PDF e imágenes de forma local para facilitar el almacenamiento y la compartición.</p>
           </article>
 
           <article class="feature-card glass scroll-reveal">
@@ -271,7 +276,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2h-8l-2-2z"/></svg>
             </div>
             <h3 class="feature-title">Organización</h3>
-            <p class="feature-description">Crea carpetas, etiqueta archivos y mantén tu biblioteca de documentos ordenada.</p>
+            <p class="feature-description">Crea carpetas, etiqueta archivos y mantén tu biblioteca de documentos ordenada de forma local.</p>
           </article>
         </div>
       </div>
@@ -325,7 +330,7 @@
           <div class="ai-visual scroll-reveal">
             <div class="ai-chat glass">
               <div class="ai-chat-header">
-                <span class="ai-chat-dot animate-pulse-dot"></span>
+                <span class="ai-chat-dot"></span>
                 <span class="ai-chat-title">DragoDocs AI Assistant</span>
               </div>
               <div class="ai-chat-messages">
@@ -398,18 +403,34 @@
         <div class="security-grid">
           <article class="security-card glass scroll-reveal">
             <div class="security-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
             </div>
-            <h3 class="security-title">Encriptación</h3>
-            <p class="security-description">Tus documentos se transmiten y almacenan con encriptación mediante conexiones HTTPS.</p>
+            <h3 class="security-title">Procesamiento local</h3>
+            <p class="security-description">El escaneo, OCR, compresión, firma y organización se procesan directamente en tu dispositivo.</p>
           </article>
 
           <article class="security-card glass scroll-reveal">
             <div class="security-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
             </div>
-            <h3 class="security-title">Verificación de identidad</h3>
-            <p class="security-description">Protege el acceso a la aplicación con autenticación segura mediante Firebase.</p>
+            <h3 class="security-title">Sin servidor del desarrollador</h3>
+            <p class="security-description">No mantenemos un servidor propio. Tus archivos no se almacenan en servidores de DragoDocs AI.</p>
+          </article>
+
+          <article class="security-card glass scroll-reveal">
+            <div class="security-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4 0-2.05 1.53-3.76 3.56-3.97l1.07-.11.5-.95C8.08 7.14 9.94 6 12 6c2.62 0 4.96 1.68 5.74 4.19l.37 1.18 1.24.11C20.78 11.68 22 12.96 22 14.5c0 1.93-1.57 3.5-3.5 3.5z"/></svg>
+            </div>
+            <h3 class="security-title">Firebase solo para IA</h3>
+            <p class="security-description">Firebase/Google se utiliza únicamente cuando eliges funciones de inteligencia artificial, no para el funcionamiento general.</p>
+          </article>
+
+          <article class="security-card glass scroll-reveal">
+            <div class="security-icon">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81 1.66 0 3-1.34 3-3s-1.34-3-3-3-3 1.34-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9c-1.66 0-3 1.34-3 3s1.34 3 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.16c-.05.21-.08.43-.08.65 0 1.61 1.31 2.92 2.92 2.92 1.61 0 2.92-1.31 2.92-2.92s-1.31-2.92-2.92-2.92z"/></svg>
+            </div>
+            <h3 class="security-title">Tú controlas el compartir</h3>
+            <p class="security-description">Decides qué documentos compartir y con qué aplicaciones. El envío se realiza desde tu dispositivo.</p>
           </article>
 
           <article class="security-card glass scroll-reveal">
@@ -426,22 +447,6 @@
             </div>
             <h3 class="security-title">Cumplimiento normativo</h3>
             <p class="security-description">La aplicación cumple con los requisitos de Google Play para protección de datos y privacidad.</p>
-          </article>
-
-          <article class="security-card glass scroll-reveal">
-            <div class="security-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            </div>
-            <h3 class="security-title">Procesamiento local</h3>
-            <p class="security-description">El escaneo, OCR, compresión y firma pueden procesarse localmente en tu dispositivo.</p>
-          </article>
-
-          <article class="security-card glass scroll-reveal">
-            <div class="security-icon">
-              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
-            </div>
-            <h3 class="security-title">Control de acceso</h3>
-            <p class="security-description">Define quién puede ver o compartir tus documentos desde la aplicación.</p>
           </article>
         </div>
       </div>
@@ -469,7 +474,7 @@
               <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.04 18.36l3.35-21.3 9.42 17.5L5.04 18.36zM2.68 16.83L9.8 1.36 13.7 13.7 2.68 16.83zm15.53-2.6l-4.55-8.45 2.57-5.14 5.57 12.2-3.59 1.39z"/></svg>
             </div>
             <h3 class="tech-name">Firebase</h3>
-            <p class="tech-description">Backend de Google para autenticación, almacenamiento y sincronización segura.</p>
+            <p class="tech-description">Servicios de Google usados únicamente cuando eliges funciones de IA, bajo sus términos y políticas.</p>
           </article>
 
           <article class="tech-item glass scroll-reveal">
@@ -548,7 +553,7 @@
           <details class="faq-item glass scroll-reveal">
             <summary class="faq-question">¿Necesito internet para usar la app?</summary>
             <div class="faq-answer">
-              <p>No necesariamente. Algunas funciones como el escaneo, OCR, compresión y firma pueden funcionar sin conexión. Las funciones de sincronización y Gemini AI requieren internet.</p>
+              <p>No necesariamente. Funciones como el escaneo, OCR, compresión y firma pueden funcionar sin conexión. Solo las funciones de Gemini AI requieren internet.</p>
             </div>
           </details>
 
@@ -652,7 +657,6 @@
   </button>
 
   <script src="assets/js/main.js" defer></script>
-  <script src="assets/js/particles.js" defer></script>
   <script src="assets/js/animations.js" defer></script>
   <script src="assets/js/scroll.js" defer></script>
 </body>
