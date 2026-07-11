@@ -39,6 +39,9 @@ firebase login                    # inicia sesión con tu cuenta de Google
 2. Pestaña **Sign-in method** → habilita **Correo electrónico/contraseña**.
    - El creador entra con **código + contraseña**; por dentro se usa un correo
      sintético `<codigo>@creadores.dragodocs.app` que él **nunca ve**.
+   *(La app también registra, best-effort, qué instalación activó qué código en la
+   colección `activations` — solo analítica, sin login. Su regla ya está en
+   `firestore.rules`, paso 3. Si Firestore no está listo, se omite sin romper nada.)*
 
 ---
 

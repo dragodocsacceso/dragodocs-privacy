@@ -170,8 +170,19 @@ exports.registerAffiliatePurchase = onCall(
     const purchaseTime = Timestamp.fromMillis(verified.purchaseTimeMillis || Date.now());
 
     // 5) Escritura atómica: compra + ranking.
+    //    Re-chequeo de idempotencia DENTRO de la transacción. El pre-chequeo del
+    //    paso 2 es solo una optimización (evita llamar a Google Play para
+    //    duplicados), pero dos llamadas casi simultáneas con el mismo token
+    //    podrían pasarlo las dos. La transacción SÍ serializa: si el documento ya
+    //    existe aquí, se aborta sin volver a incrementar el ranking (evita contar
+    //    la misma venta dos veces). En Firestore, todas las lecturas de la
+    //    transacción deben ir ANTES de cualquier escritura.
     const leaderRef = db.collection("leaderboard").doc(code);
+    let committed = false;
     await db.runTransaction(async (tx) => {
+      const dup = await tx.get(purchaseRef);
+      if (dup.exists) return; // ya registrada por otra llamada concurrente
+
       tx.set(purchaseRef, {
         affiliateUid,
         code,
@@ -202,7 +213,14 @@ exports.registerAffiliatePurchase = onCall(
         },
         { merge: true }
       );
+      committed = true;
     });
+
+    // Si otra llamada concurrente ganó la carrera, la transacción no escribió:
+    // respondemos como idempotente (igual que el pre-chequeo del paso 2).
+    if (!committed) {
+      return { ok: true, alreadyRegistered: true };
+    }
 
     return { ok: true, commissionMicros, currency };
   }

@@ -53,5 +53,20 @@ service cloud.firestore {
       allow update: if false;
       allow delete: if false;
     }
+
+    // Activaciones de código (analítica best-effort de la app): cada instalación
+    // que ACTIVA un código de creador deja un registro. La app se autentica de
+    // forma ANÓNIMA y sella SU propio uid. Sin esta regla la escritura se
+    // denegaría (default-deny) y la analítica nunca funcionaría. Es opcional:
+    // la app degrada con gracia (runCatching) si Auth anónima no está activa.
+    // Nadie lee ni borra desde el cliente (el admin consulta desde la consola).
+    match /activations/{installId} {
+      allow read:   if false;
+      allow create, update:
+                    if request.resource.data.code is string
+                    && request.resource.data.code.size() <= 40
+                    && request.resource.data.installId == installId;
+      allow delete: if false;
+    }
   }
 }
