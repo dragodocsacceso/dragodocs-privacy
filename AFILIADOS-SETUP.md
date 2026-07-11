@@ -108,21 +108,20 @@ Firebase Console → **App Check**:
 
 ## 8) Crear los **productos con descuento** en Play Console
 
-Google Play tiene **precios fijos por producto**: para dar un 10% de descuento
-hay que crear un **producto aparte** más barato.
+Los planes Premium son **suscripción mensual y anual** (no hay compra única).
+Google Play tiene **precios fijos**: para dar un 10% de descuento hay que crear
+una **suscripción aparte** más barata.
 
-1. Play Console → tu app → **Monetización → Productos → Productos integrados**
-   (o **Suscripciones**, según corresponda).
-2. Duplica tu producto Premium con un ID nuevo y el **precio ya rebajado**, p. ej.:
-   - Base: `dragodocs_premium_lifetime`  →  Descuento: `dragodocs_premium_lifetime_off10`
-3. Activa el producto. Ese **ID con descuento** es el que pondrás en el creador
+1. Play Console → tu app → **Monetización → Suscripciones**.
+2. Duplica tu suscripción con un ID nuevo y el **precio ya rebajado**, p. ej.:
+   - Base: `dragodocs_premium_yearly`  →  Descuento: `dragodocs_premium_yearly_off10`
+   - (o el mensual: `dragodocs_premium_monthly_off10`)
+3. Activa la suscripción. Ese **ID con descuento** es el que pondrás en el creador
    (campo `discountProductId`, paso 9).
-   - Si un creador **no** debe dar descuento (solo comisión), deja `discountProductId` vacío.
+   - Si un creador **no** debe dar descuento (solo cuenta sus ventas), deja `discountProductId` vacío.
 
-*(Opcional pero recomendado)* Para que la comisión de la **compra única** se
-calcule con un precio fiable en el servidor, crea en Firestore un documento
-`products/<ID_del_producto>` con `{ priceMicros: <precio*1000000>, currency: "MXN" }`.
-Para **suscripciones** no hace falta: el precio lo devuelve Google Play.
+*(Nota)* Para suscripciones, el precio real lo devuelve Google Play al verificar,
+así que la Cloud Function calcula la comisión con datos fiables sin config extra.
 
 ---
 
@@ -144,7 +143,7 @@ node scripts/admin-create-affiliate.js \
   --commission 0.20 \
   --discount 0.10 \
   --photo "https://url-de-la-foto.jpg" \
-  --discountProduct dragodocs_premium_lifetime_off10
+  --discountProduct dragodocs_premium_yearly_off10
 ```
 
 - `--commission 0.20` = 20% de comisión para el creador.

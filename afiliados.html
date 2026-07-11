@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="robots" content="noindex, nofollow">
   <title>Afiliados — DragoDocs AI</title>
-  <meta name="description" content="Panel de creadores y afiliados de DragoDocs AI. Consulta tus comisiones, ventas e historial.">
+  <meta name="description" content="Panel de creadores y afiliados de DragoDocs AI. Consulta las compras hechas con tu código y tu ranking.">
   <meta name="theme-color" content="#050507">
   <meta name="color-scheme" content="dark">
 
@@ -68,7 +68,7 @@
     <div class="container">
       <span class="section-eyebrow">Programa de creadores</span>
       <h1 class="page-header-title">Panel de <span class="gradient-text">Afiliados</span></h1>
-      <p class="page-header-subtitle">Accede con tu código de creador para ver tus comisiones, ventas e historial en tiempo real.</p>
+      <p class="page-header-subtitle">Accede con tu código de creador para ver cuántas compras se han hecho con tu código y tu ranking.</p>
       <nav class="breadcrumbs" aria-label="Breadcrumb">
         <a href="index.html">Inicio</a>
         <span class="breadcrumbs-separator">/</span>
@@ -175,84 +175,31 @@
           </div>
         </div>
 
-        <!-- Comisiones -->
-        <div>
-          <h2 class="block-title">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1H4.32c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
-            Comisiones
-          </h2>
-          <div class="stat-grid">
-            <div class="stat-card accent-cyan">
-              <div class="stat-card-label">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg>
-                Comisión acumulada
-              </div>
-              <div id="statAccumulated" class="stat-card-value">—</div>
-              <div class="stat-card-sub">Total generado con tu código</div>
+        <!-- Resumen simple: compras con tu código + ranking -->
+        <div class="stat-grid">
+          <div class="stat-card accent-cyan">
+            <div class="stat-card-label">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zM1 2v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.14 0-.25-.11-.25-.25l.03-.12L8.1 13h7.45c.75 0 1.41-.41 1.75-1.03l3.58-6.49L19.83 4H5.21l-.94-2H1zm16 16c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2z"/></svg>
+              Compras con tu código
             </div>
-            <div class="stat-card accent-violet">
-              <div class="stat-card-label">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/></svg>
-                Comisión pendiente
-              </div>
-              <div id="statPending" class="stat-card-value">—</div>
-              <div class="stat-card-sub">Aún por pagar</div>
+            <div id="statTotalSales" class="stat-card-value">—</div>
+            <div class="stat-card-sub">Premium compradas usando tu código</div>
+          </div>
+          <div class="stat-card accent-violet">
+            <div class="stat-card-label">
+              <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l2.4 7.4H22l-6 4.6 2.3 7.4L12 16.9 5.7 21.4 8 14 2 9.4h7.6z"/></svg>
+              Ranking global
             </div>
-            <div class="stat-card accent-blue">
-              <div class="stat-card-label">
-                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
-                Comisión pagada
-              </div>
-              <div id="statPaid" class="stat-card-value">—</div>
-              <div class="stat-card-sub">Ya liquidada</div>
-            </div>
+            <div id="statRank" class="stat-card-value">—</div>
+            <div class="stat-card-sub">Tu posición entre los creadores</div>
           </div>
         </div>
 
-        <!-- Ventas por periodo -->
-        <div>
-          <h2 class="block-title">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3.5 18.49l6-6.01 4 4L22 6.92l-1.41-1.41-7.09 7.97-4-4L2 16.99z"/></svg>
-            Ventas
-          </h2>
-          <div class="stat-grid">
-            <div class="stat-card">
-              <div class="stat-card-label">Ventas de hoy</div>
-              <div id="statToday" class="stat-card-value">—</div>
-              <div id="statTodayAmount" class="stat-card-sub">—</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-label">Esta semana</div>
-              <div id="statWeek" class="stat-card-value">—</div>
-              <div id="statWeekAmount" class="stat-card-sub">—</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-label">Este mes</div>
-              <div id="statMonth" class="stat-card-value">—</div>
-              <div id="statMonthAmount" class="stat-card-sub">—</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-card-label">Compras totales</div>
-              <div id="statTotalSales" class="stat-card-value">—</div>
-              <div class="stat-card-sub">Premium con tu código</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Gráfica de crecimiento -->
-        <div class="panel">
-          <h2 class="block-title">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
-            Crecimiento (últimos meses)
-          </h2>
-          <div id="chart" class="chart"></div>
-        </div>
-
-        <!-- Historial completo -->
+        <!-- Historial básico -->
         <div class="panel">
           <h2 class="block-title">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M13 3c-4.97 0-9 4.03-9 9H1l3.89 3.89.07.14L9 12H6c0-3.87 3.13-7 7-7s7 3.13 7 7-3.13 7-7 7c-1.93 0-3.68-.79-4.94-2.06l-1.42 1.42C8.27 19.99 10.51 21 13 21c4.97 0 9-4.03 9-9s-4.03-9-9-9zm-1 5v5l4.28 2.54.72-1.21-3.5-2.08V8H12z"/></svg>
-            Historial de compras
+            Compras hechas con tu código
           </h2>
           <div class="table-scroll">
             <table class="history-table">
@@ -261,9 +208,6 @@
                   <th>Fecha</th>
                   <th>Hora</th>
                   <th>Producto</th>
-                  <th>Precio</th>
-                  <th>Código</th>
-                  <th>Comisión</th>
                   <th>Estado</th>
                 </tr>
               </thead>
