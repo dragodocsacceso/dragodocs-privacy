@@ -1,0 +1,57 @@
+rules_version = '2';
+
+// =========================================================
+// DragoDocs AI — Reglas de seguridad de Firestore (Afiliados)
+// ---------------------------------------------------------
+// Principio: los clientes NUNCA escriben datos sensibles.
+//  - La web solo LEE los datos del creador que ha iniciado sesión.
+//  - La app solo LEE códigos públicos para validar y aplicar descuento.
+//  - Las COMPRAS y el RANKING solo los escribe la Cloud Function
+//    (Admin SDK), que además verifica la compra contra Google Play.
+//  - Las compras no se pueden modificar ni borrar => "Nunca eliminar
+//    registros" queda garantizado a nivel de base de datos.
+// =========================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Perfil del creador. Doc id = uid de Firebase Auth.
+    // Solo el propio creador (logueado con su código+contraseña) lo lee.
+    match /affiliates/{uid} {
+      allow read:  if request.auth != null && request.auth.uid == uid;
+      allow write: if false; // Solo consola/servidor (Admin SDK).
+    }
+
+    // Códigos públicos: la APP los lee para validar el código, mostrar
+    // el nombre del creador y saber qué producto con descuento usar.
+    // NO contienen datos de ganancias, así que su lectura es pública.
+    match /affiliateCodes/{code} {
+      allow read:  if true;
+      allow write: if false; // Solo Admin SDK (script de alta / función).
+    }
+
+    // Ranking público (lo mantiene la Cloud Function). Lectura pública
+    // para poder calcular la posición del creador en el panel.
+    match /leaderboard/{code} {
+      allow read:  if true;
+      allow write: if false;
+    }
+
+    // Precios de referencia por producto (opcional). Sirven para calcular
+    // la comisión de forma fiable en el servidor. Lectura pública.
+    match /products/{productId} {
+      allow read:  if true;
+      allow write: if false;
+    }
+
+    // Compras: el creador dueño puede LEER las suyas. Nadie escribe,
+    // actualiza ni borra desde el cliente (solo la Cloud Function).
+    match /purchases/{id} {
+      allow read:   if request.auth != null
+                    && resource.data.affiliateUid == request.auth.uid;
+      allow create: if false;
+      allow update: if false;
+      allow delete: if false;
+    }
+  }
+}
