@@ -321,6 +321,7 @@
 .stat-card.accent-blue .stat-card-value { color: var(--color-blue); }
 .stat-card.accent-purple .stat-card-value { color: var(--color-purple); }
 .stat-card.accent-violet .stat-card-value { color: var(--color-violet); }
+.stat-card.accent-green .stat-card-value { color: #34d399; }
 
 .block-title {
   font-size: 1.15rem;

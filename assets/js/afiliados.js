@@ -49,6 +49,17 @@ function fmtTime(d) {
   return d ? d.toLocaleTimeString('es-MX', { hour: '2-digit', minute: '2-digit' }) : '—';
 }
 
+// La comisión llega en "micros" (millonésimas de la moneda). La Cloud Function
+// la calcula de forma fiable con el precio verificado por Google Play.
+function fmtMoney(micros, currency) {
+  const val = (Number(micros) || 0) / 1e6;
+  try {
+    return new Intl.NumberFormat('es-MX', { style: 'currency', currency: currency || 'MXN', maximumFractionDigits: 0 }).format(val);
+  } catch {
+    return '$' + val.toFixed(0) + ' ' + (currency || 'MXN');
+  }
+}
+
 function statusBadge(status) {
   const map = {
     paid: ['paid', 'Pagada'],
@@ -175,8 +186,11 @@ function renderDashboard(data) {
   $('codeValue').textContent = profile.code || '—';
   $('shareLink').value = `${SHARE_BASE}?ref=${encodeURIComponent(profile.code || '')}`;
 
-  // Resumen simple
+  // Resumen: veces que se usó el código + ganancias (comisión) + ranking.
   $('statTotalSales').textContent = purchases.length;
+  const totalCommission = purchases.reduce((s, p) => s + (Number(p.commissionMicros) || 0), 0);
+  const currency = (purchases.find((p) => p.currency) || {}).currency || 'MXN';
+  $('statEarnings').textContent = fmtMoney(totalCommission, currency);
   $('statRank').textContent = rank ? `#${rank}` : '—';
 
   // Historial básico (fecha, hora, producto, estado)
@@ -270,9 +284,13 @@ function demoData() {
   const purchases = [];
   const offsets = [0, 0, 1, 2, 4, 9, 15, 22, 38, 51, 66, 80, 95, 120];
   offsets.forEach((off, i) => {
+    const isYearly = (i % products.length) === 0;
     purchases.push({
       product: products[i % products.length],
       code: 'DRAGO10', affiliateUid: 'demo',
+      // Comisión demo: 20% de $1,500 (anual) o de $150 (mensual), en micros.
+      commissionMicros: isYearly ? 300000000 : 30000000,
+      currency: 'MXN',
       status: i % 5 === 0 ? 'pending' : (i % 7 === 0 ? 'refunded' : 'paid'),
       createdAt: now - off * day - i * 3600000,
     });

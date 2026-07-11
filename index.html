@@ -52,14 +52,16 @@
     "applicationCategory": "ProductivityApplication",
     "operatingSystem": "ANDROID",
     "offers": {
-      "@type": "Offer",
-      "price": "0",
-      "priceCurrency": "MXN"
+      "@type": "AggregateOffer",
+      "lowPrice": "0",
+      "highPrice": "1500",
+      "priceCurrency": "MXN",
+      "offerCount": "3"
     },
     "author": {
       "@type": "Organization",
       "name": "DragoDocs AI Team",
-      "email": "guadalupejesus117@gmail.com"
+      "email": "dragodocs.ai@outlook.es"
     },
     "description": "Aplicación para escanear, organizar, convertir, comprimir, firmar y compartir documentos con inteligencia artificial.",
     "image": "https://guadalupejesus117.github.io/dragodocs-privacy/assets/images/og-image.png"
@@ -95,7 +97,7 @@
       </div>
 
       <div class="nav-actions">
-        <a href="https://play.google.com/store/apps/details?id=com.dragodocs.ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm nav-cta">
+        <a href="https://play.google.com/store/apps/details?id=com.dragodocs.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-sm nav-cta">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.72 11.5 20.72 11.96C20.72 12.42 20.5 12.83 20.16 13.11L17.89 14.53L15.39 12L17.89 9.47L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
           Descargar
         </a>
@@ -126,7 +128,7 @@
       </p>
 
       <div class="hero-buttons scroll-reveal">
-        <a href="https://play.google.com/store/apps/details?id=com.dragodocs.ai" target="_blank" rel="noopener noreferrer" class="btn btn-google-play">
+        <a href="https://play.google.com/store/apps/details?id=com.dragodocs.app" target="_blank" rel="noopener noreferrer" class="btn btn-google-play">
           <svg class="btn-icon" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M3 20.5V3.5C3 2.91 3.34 2.39 3.84 2.15L13.69 12L3.84 21.85C3.34 21.6 3 21.09 3 20.5ZM16.81 15.12L6.05 21.34L14.54 12.85L16.81 15.12ZM20.16 10.81C20.5 11.08 20.72 11.5 20.72 11.96C20.72 12.42 20.5 12.83 20.16 13.11L17.89 14.53L15.39 12L17.89 9.47L20.16 10.81ZM6.05 2.66L16.81 8.88L14.54 11.15L6.05 2.66Z"/></svg>
           <span class="btn-google-play-content">
             <span class="btn-google-play-small">Disponible en</span>
@@ -352,44 +354,75 @@
       <div class="container">
         <div class="section-header scroll-reveal">
           <span class="section-eyebrow">Premium</span>
-          <h2 id="premium-title" class="section-title">Funciones <span class="gradient-text">avanzadas</span></h2>
-          <p class="section-subtitle">La versión premium de DragoDocs AI amplía las capacidades de la aplicación para quienes necesitan más de sus documentos.</p>
+          <h2 id="premium-title" class="section-title">Planes y <span class="gradient-text">precios</span></h2>
+          <p class="section-subtitle">Empieza gratis y, cuando necesites más, elige el plan Premium mensual o anual. Sin permanencia: cancelas cuando quieras desde Google Play.</p>
         </div>
 
         <div class="premium-grid">
           <article class="premium-card glass scroll-reveal">
             <div class="premium-card-header">
-              <h3 class="premium-card-title">Versión gratuita</h3>
-              <p class="premium-card-subtitle">Funciones esenciales</p>
+              <h3 class="premium-card-title">Gratis</h3>
+              <p class="premium-card-subtitle">Para empezar, sin costo</p>
+              <div class="premium-card-price">
+                <span class="premium-price-amount">$0</span>
+                <span class="premium-price-period">MXN · para siempre</span>
+              </div>
             </div>
             <ul class="premium-card-list">
-              <li>Escaneo básico</li>
-              <li>Editor PDF limitado</li>
-              <li>Conversión básica</li>
-              <li>Compresión limitada</li>
-              <li>Firma simple</li>
+              <li>Escaneos limitados (5 por día)</li>
+              <li>Herramientas básicas</li>
+              <li>IA con uso limitado</li>
+              <li>Marca de agua en exportaciones</li>
               <li>Modo offline</li>
             </ul>
+            <a href="https://play.google.com/store/apps/details?id=com.dragodocs.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block">Descargar gratis</a>
+          </article>
+
+          <article class="premium-card glass scroll-reveal">
+            <div class="premium-card-header">
+              <h3 class="premium-card-title">Premium Mensual</h3>
+              <p class="premium-card-subtitle">Flexibilidad mes a mes</p>
+              <div class="premium-card-price">
+                <span class="premium-price-original">$170</span>
+                <span class="premium-price-amount">$150</span>
+                <span class="premium-price-period">MXN al mes</span>
+              </div>
+              <span class="premium-price-save">Ahorra $20 cada mes</span>
+            </div>
+            <ul class="premium-card-list">
+              <li>Escaneos ilimitados</li>
+              <li>Todas las herramientas</li>
+              <li>IA avanzada</li>
+              <li>Sin marca de agua</li>
+              <li>Soporte prioritario</li>
+            </ul>
+            <a href="https://play.google.com/store/apps/details?id=com.dragodocs.app" target="_blank" rel="noopener noreferrer" class="btn btn-secondary btn-block">Suscribirme en Google Play</a>
           </article>
 
           <article class="premium-card premium-card-featured glass scroll-reveal">
-            <div class="premium-card-badge">Premium</div>
+            <div class="premium-card-badge">Más popular</div>
             <div class="premium-card-header">
-              <h3 class="premium-card-title">DragoDocs AI Pro</h3>
-              <p class="premium-card-subtitle">Suscripción mensual o anual</p>
+              <h3 class="premium-card-title">Premium Anual</h3>
+              <p class="premium-card-subtitle">El mejor precio del año</p>
+              <div class="premium-card-price">
+                <span class="premium-price-original">$2,040</span>
+                <span class="premium-price-amount">$1,500</span>
+                <span class="premium-price-period">MXN al año</span>
+              </div>
+              <span class="premium-price-save">Ahorra $540 · sale a $125 al mes</span>
             </div>
             <ul class="premium-card-list">
-              <li>OCR avanzado</li>
-              <li>Conversión ilimitada</li>
-              <li>Compresión avanzada</li>
-              <li>Firma digital extendida</li>
-              <li>Sin publicidad</li>
-              <li>Soporte prioritario</li>
+              <li>Todo lo del plan mensual</li>
+              <li>Acceso completo a todas las funciones</li>
+              <li>Actualizaciones exclusivas</li>
+              <li>Mejor precio del año</li>
             </ul>
-            <a href="https://play.google.com/store/apps/details?id=com.dragodocs.ai" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">Ver en Google Play</a>
+            <a href="https://play.google.com/store/apps/details?id=com.dragodocs.app" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">Ver en Google Play</a>
           </article>
 
         </div>
+
+        <p class="premium-note scroll-reveal">Precios en pesos mexicanos (MXN); Google Play muestra el precio equivalente en tu moneda local antes de confirmar. Las suscripciones se renuevan automáticamente y puedes cancelarlas en cualquier momento desde Google Play.</p>
       </div>
     </section>
 
@@ -587,7 +620,7 @@
             </div>
             <div class="contact-info-content">
               <h2>Correo electrónico</h2>
-              <a href="mailto:guadalupejesus117@gmail.com">guadalupejesus117@gmail.com</a>
+              <a href="mailto:dragodocs.ai@outlook.es">dragodocs.ai@outlook.es</a>
             </div>
           </div>
 
