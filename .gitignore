@@ -1,0 +1,33 @@
+# ─── Credenciales de Firebase Admin — ¡NUNCA subir a GitHub! ───────────────
+# Este repo se publica en GitHub Pages (público). Una clave de cuenta de
+# servicio da acceso TOTAL al proyecto Firebase; si se sube, cualquiera la ve.
+serviceAccountKey.json
+*serviceAccount*.json
+*-service-account*.json
+.runtimeconfig.json
+
+# ─── Secretos / entorno ────────────────────────────────────────────────────
+.env
+.env.*
+*.local
+
+# ─── Dependencias ──────────────────────────────────────────────────────────
+node_modules/
+functions/node_modules/
+
+# ─── Firebase CLI (caché y logs) ───────────────────────────────────────────
+.firebase/
+firebase-debug.log
+firebase-debug.*.log
+firestore-debug.log
+database-debug.log
+pubsub-debug.log
+ui-debug.log
+
+# ─── Logs varios ───────────────────────────────────────────────────────────
+*.log
+npm-debug.log*
+
+# ─── Sistema operativo / editor ────────────────────────────────────────────
+.DS_Store
+Thumbs.db

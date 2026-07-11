@@ -30,7 +30,7 @@ export const firebaseConfig = {
   messagingSenderId: "147932026481",
   // 👇 PEGA AQUÍ el appId de la app Web que registres en Firebase Console.
   //    Tiene el formato: 1:147932026481:web:xxxxxxxxxxxxxxxx
-  appId: "REEMPLAZA_CON_APP_ID_WEB"
+  appId: "1:147932026481:web:6cfa27fa1c77a0f427edd0"
 };
 
 /* Dominio del correo sintético para el login por código.
