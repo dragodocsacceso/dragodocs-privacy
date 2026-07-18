@@ -11,6 +11,13 @@ serviceAccountKey.json
 .env.*
 *.local
 
+# ─── Lista de creadores con contraseñas en claro — ¡NUNCA subir! ───────────
+# La generó el asistente para dar de alta afiliados en lote. Contiene
+# contraseñas en texto plano; guárdala en tu gestor, no en git.
+scripts/creators-batch.json
+creadores-*.csv
+creadores-*.txt
+
 # ─── Dependencias ──────────────────────────────────────────────────────────
 node_modules/
 functions/node_modules/
