@@ -16,12 +16,15 @@
     "website",
     "github-pages"
   ],
-  "author": "DragoDocs AI Team <dragodocs.ai@outlook.es>",
+  "author": "DragoDocs AI Team <dragodocsacceso@gmail.com>",
   "license": "UNLICENSED",
   "type": "commonjs",
   "devDependencies": {
     "adm-zip": "^0.5.18",
     "sharp": "^0.35.3",
     "to-ico": "^1.1.5"
+  },
+  "dependencies": {
+    "firebase-admin": "^14.2.0"
   }
 }

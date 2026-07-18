@@ -51,7 +51,7 @@ DragoDocs AI permite escanear, organizar, convertir, comprimir, firmar y compart
 
 - **Nombre:** DragoDocs AI
 - **Desarrollador:** DragoDocs AI Team
-- **Contacto:** dragodocs.ai@outlook.es
+- **Contacto:** dragodocsacceso@gmail.com
 
 ## Licencia
 
