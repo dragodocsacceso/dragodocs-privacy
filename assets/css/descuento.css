@@ -1,0 +1,101 @@
+/* ═══════════════════════════════════════════════════════════
+   descuento.css — página pública "Código de descuento"
+   Solo lo que NO existe ya en afiliados.css: el bloque del
+   código (.code-block, .copy-btn) y .panel/.block-title se
+   REUTILIZAN tal cual desde afiliados.css, a propósito.
+   ═══════════════════════════════════════════════════════════ */
+
+.discount-container {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xl);
+}
+
+.discount-card {
+  padding: var(--space-xl);
+  border-radius: var(--radius-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+/* El código es lo primero que se lee: sin el margen inferior que
+   .code-block trae pensado para ir seguido del enlace de compartir
+   del panel de afiliados, aquí queda pegado al resto de la tarjeta. */
+.discount-code-block { margin-bottom: 0; }
+
+.discount-prices {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.discount-prices li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-md);
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-border);
+}
+
+.discount-plan-name { font-weight: 600; color: var(--color-text); }
+
+.discount-plan-price {
+  font-family: var(--font-mono);
+  font-weight: 700;
+  color: var(--color-cyan);
+  white-space: nowrap;
+}
+
+.discount-plan-price s {
+  font-weight: 400;
+  color: var(--color-text-muted);
+  margin-right: var(--space-sm);
+  opacity: 0.7;
+}
+
+.steps-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.steps-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lg);
+}
+
+.steps-list p {
+  margin: var(--space-xs) 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9375rem;
+}
+
+.step-number {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background: var(--color-surface-light);
+  border: 1px solid var(--color-border-strong);
+  color: var(--color-cyan);
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.9375rem;
+}
