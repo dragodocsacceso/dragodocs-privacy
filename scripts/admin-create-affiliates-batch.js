@@ -81,7 +81,7 @@ async function main() {
   if (dryRun) {
     creators.forEach((c, i) => {
       const code = String(c.code).trim().toUpperCase();
-      console.log(`${String(i + 1).padStart(2)}  ${code.padEnd(11)}  comisión ${((Number(c.commissionRate) || 0) * 100).toFixed(0)}%  ${c.discountProductId ? '(descuento: ' + c.discountProductId + ')' : '(sin descuento)'}`);
+      console.log(`${String(i + 1).padStart(2)}  ${code.padEnd(11)}  comisión $20 MXN por primera compra  ${c.discountProductId ? '(con descuento)' : '(sin descuento)'}`);
     });
     console.log('\n✅ Dry-run OK. Quita --dry-run para crearlos de verdad.');
     process.exit(0);
@@ -114,7 +114,8 @@ async function main() {
     const code = String(c.code).trim().toUpperCase();
     const name = String(c.name || code).trim();
     const password = String(c.password);
-    const commissionRate = c.commissionRate != null ? Number(c.commissionRate) : 0.20;
+    const commissionRate = 0;
+    const commissionMxnMicros = 20_000_000;
     const discountRate = c.discountRate != null ? Number(c.discountRate) : 0;
     const photoUrl = c.photoUrl || null;
     const discountProductId = c.discountProductId || null;
@@ -141,13 +142,13 @@ async function main() {
 
       // 2) Perfil privado
       await db.collection('affiliates').doc(uid).set({
-        code, name, photoUrl, commissionRate, discountRate,
+        code, name, photoUrl, commissionRate, commissionMxnMicros, discountRate,
         active: true, updatedAt: now, createdAt: now,
       }, { merge: true });
 
       // 3) Código público (lo lee la app)
       await db.collection('affiliateCodes').doc(code).set({
-        code, uid, name, photoUrl, commissionRate, discountRate,
+        code, uid, name, photoUrl, commissionRate, commissionMxnMicros, discountRate,
         discountProductId, active: true, updatedAt: now, createdAt: now,
       }, { merge: true });
 

@@ -112,19 +112,19 @@ Firebase Console → **App Check**:
 ## 8) Crear los **productos con descuento** en Play Console
 
 Los planes Premium son **suscripción mensual y anual** (no hay compra única).
-Google Play tiene **precios fijos**: para dar un 10% de descuento hay que crear
-una **suscripción aparte** más barata.
+Google Play tiene **precios fijos**: para dar $20 MXN de descuento hay que crear
+la variante rebajada y revisar sus precios regionales en Play Console.
 
 1. Play Console → tu app → **Monetización → Suscripciones**.
 2. Duplica tu suscripción con un ID nuevo y el **precio ya rebajado**, p. ej.:
-   - Base: `dragodocs_premium_yearly`  →  Descuento: `dragodocs_premium_yearly_off10`
-   - (o el mensual: `dragodocs_premium_monthly_off10`)
+   - Base mensual: `dragodocs_premium_monthly` → descuento: `dragodocs_premium_monthly_desc`
+   - Base anual: `dragodocs_premium_yearly` → descuento: `dragodocs_premium_yearly_desc`
 3. Activa la suscripción. Ese **ID con descuento** es el que pondrás en el creador
    (campo `discountProductId`, paso 9).
    - Si un creador **no** debe dar descuento (solo cuenta sus ventas), deja `discountProductId` vacío.
 
-*(Nota)* Para suscripciones, el precio real lo devuelve Google Play al verificar,
-así que la Cloud Function calcula la comisión con datos fiables sin config extra.
+La comisión no es porcentual: la Cloud Function registra **$20 MXN una sola vez**, solo
+cuando la primera compra ya fue cobrada. Pruebas gratis y pagos pendientes no cuentan.
 
 ---
 
@@ -143,14 +143,13 @@ node scripts/admin-create-affiliate.js \
   --code DRAGO10 \
   --name "Nombre del Creador" \
   --password "unaClaveSegura" \
-  --commission 0.20 \
-  --discount 0.10 \
+  --discount 0.12 \
   --photo "https://url-de-la-foto.jpg" \
-  --discountProduct dragodocs_premium_yearly_off10
+  --discountProduct dragodocs_premium_yearly_desc
 ```
 
-- `--commission 0.20` = 20% de comisión para el creador.
-- `--discount 0.10` = 10% (informativo) · `--discountProduct` = ID del producto rebajado.
+- La comisión queda fija en $20 MXN por primera compra pagada.
+- `--discount` es informativo · `--discountProduct` = ID del producto rebajado.
 - Omite `--discountProduct` si ese creador solo da comisión sin bajar el precio.
 - Vuelve a ejecutarlo con el mismo `--code` para **actualizar** al creador.
 
@@ -208,7 +207,7 @@ El apartado **“¿Tienes un código de creador?”** aparece en el diálogo de 
 
 | Colección | Quién escribe | Quién lee | Contenido |
 |---|---|---|---|
-| `affiliateCodes/{CODIGO}` | Admin/script | Público (app) | nombre, uid, comisión, descuento, `discountProductId`, activo |
+| `affiliateCodes/{CODIGO}` | Admin/script | Público (app) | nombre, uid, comisión fija, descuento, `discountProductId`, activo |
 | `affiliates/{uid}` | Admin/script | Solo el dueño | perfil del creador |
 | `purchases/{hash}` | Solo Cloud Function | Solo el dueño | compra verificada, comisión, estado (nunca se borra) |
 | `leaderboard/{CODIGO}` | Solo Cloud Function | Público | totales para el ranking |

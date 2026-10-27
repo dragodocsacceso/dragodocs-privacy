@@ -68,7 +68,8 @@ async function main() {
   if (!name) fail('Falta --name (nombre del creador).');
   if (!password || password.length < 6) fail('Falta --password (mínimo 6 caracteres).');
 
-  const commissionRate = args.commission != null ? Number(args.commission) : 0.20;
+  const commissionRate = 0;
+  const commissionMxnMicros = 20_000_000;
   const discountRate = args.discount != null ? Number(args.discount) : 0;
   const photoUrl = args.photo || null;
   const discountProductId = args.discountProduct || null;
@@ -111,7 +112,7 @@ async function main() {
 
   // ── 2) Perfil privado ──────────────────────────────────────────────────────
   await db.collection('affiliates').doc(uid).set({
-    code, name, photoUrl, commissionRate, discountRate,
+    code, name, photoUrl, commissionRate, commissionMxnMicros, discountRate,
     active: true, updatedAt: now,
     createdAt: now,
   }, { merge: true });
@@ -119,7 +120,7 @@ async function main() {
   // ── 3) Código público (lo lee la app) ──────────────────────────────────────
   await db.collection('affiliateCodes').doc(code).set({
     code, uid, name, photoUrl,
-    commissionRate, discountRate,
+    commissionRate, commissionMxnMicros, discountRate,
     discountProductId,          // null = sin descuento (solo comisión)
     active: true, updatedAt: now,
     createdAt: now,
@@ -137,7 +138,7 @@ async function main() {
   console.log('\n✅ Creador listo:');
   console.log(`   Código:      ${code}`);
   console.log(`   Nombre:      ${name}`);
-  console.log(`   Comisión:    ${(commissionRate * 100).toFixed(0)}%`);
+  console.log('   Comisión:    $20 MXN por primera compra pagada');
   console.log(`   Descuento:   ${(discountRate * 100).toFixed(0)}%${discountProductId ? '  (producto: ' + discountProductId + ')' : ''}`);
   console.log(`   Entra en:    /afiliados.html  con el código y la contraseña que definiste.`);
   process.exit(0);

@@ -38,6 +38,15 @@ setGlobalOptions({ region: "us-central1", maxInstances: 10 });
 // ⚠️ DEBE ser el applicationId real publicado en Google Play.
 //    Coincide con app/build.gradle.kts (applicationId = "com.dragodocs.app").
 const PACKAGE_NAME = "com.dragodocs.app";
+const PREMIUM_PRODUCT_IDS = new Set([
+  "dragodocs_premium_monthly",
+  "dragodocs_premium_yearly",
+  "dragodocs_premium_monthly_desc",
+  "dragodocs_premium_yearly_desc",
+]);
+// Pago único por la primera compra atribuida al creador. La venta puede ocurrir en
+// cualquier moneda; la deuda con el creador se liquida en MXN y no depende del cambio.
+const CREATOR_COMMISSION_MXN_MICROS = 20_000_000;
 
 // Cliente autenticado de la API de Google Play (usa las credenciales
 // por defecto de la Cloud Function; esa cuenta de servicio debe estar
@@ -72,7 +81,8 @@ async function verifyWithPlay(productType, productId, purchaseToken) {
       token: purchaseToken,
     });
     // paymentState: 0 pendiente, 1 recibido, 2 prueba gratis, 3 diferido.
-    const paid = data.paymentState === 1 || data.paymentState === 2;
+    // Una prueba gratis NO genera comisión: todavía no entró dinero.
+    const paid = data.paymentState === 1;
     return {
       valid: paid,
       orderId: data.orderId || null,
@@ -113,6 +123,9 @@ exports.registerAffiliatePurchase = onCall(
     if (!code || !productId || !purchaseToken) {
       throw new HttpsError("invalid-argument", "Faltan datos de la compra.");
     }
+    if (productType !== "subs" || !PREMIUM_PRODUCT_IDS.has(productId)) {
+      throw new HttpsError("invalid-argument", "El producto no pertenece a DragoDocs Premium.");
+    }
 
     // 1) El código debe existir y estar activo.
     const codeRef = db.collection("affiliateCodes").doc(code);
@@ -125,7 +138,6 @@ exports.registerAffiliatePurchase = onCall(
       throw new HttpsError("failed-precondition", "El código del creador no está activo.");
     }
     const affiliateUid = codeData.uid;
-    const commissionRate = Number(codeData.commissionRate) || 0;
 
     // 2) Idempotencia: una compra (token) = un documento.
     const purchaseId = sha256(purchaseToken);
@@ -165,7 +177,7 @@ exports.registerAffiliatePurchase = onCall(
     }
     priceMicros = Number(priceMicros) || 0;
     currency = currency || "MXN";
-    const commissionMicros = Math.round(priceMicros * commissionRate);
+    const commissionMicros = CREATOR_COMMISSION_MXN_MICROS;
 
     const purchaseTime = Timestamp.fromMillis(verified.purchaseTimeMillis || Date.now());
 
@@ -191,8 +203,9 @@ exports.registerAffiliatePurchase = onCall(
         productType,
         priceMicros,
         currency,
-        commissionRate,
+        commissionType: "fixed_first_purchase",
         commissionMicros,
+        commissionCurrency: "MXN",
         status: "pending", // pasa a "paid" cuando liquides al creador
         orderId: verified.orderId,
         purchaseTimeMillis: verified.purchaseTimeMillis,
@@ -222,6 +235,6 @@ exports.registerAffiliatePurchase = onCall(
       return { ok: true, alreadyRegistered: true };
     }
 
-    return { ok: true, commissionMicros, currency };
+    return { ok: true, commissionMicros, commissionCurrency: "MXN" };
   }
 );

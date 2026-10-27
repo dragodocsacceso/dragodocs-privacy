@@ -127,7 +127,7 @@
 <section class="legal-section">
 <h2>9. Programa de creadores (cupones)</h2>
 <p>Si introduces un código de creador, DragoDocs AI consulta la validez del código y registra la activación en Firebase Firestore. Para ello se guarda un identificador aleatorio de instalación (no vinculado a tu identidad, sin nombre ni correo) junto con el código utilizado, con el fin de aplicar la promoción y prevenir usos fraudulentos. Este identificador no permite identificarte personalmente.</p>
-<p>Si además realizas una compra Premium con un código de creador activo, se envían los datos de esa compra (identificador del producto, comprobante de compra de Google Play, importe y moneda) a una función de servidor (Firebase Cloud Functions) que verifica la compra con Google Play y acredita la comisión al creador. Estos datos solo se envían si compras con un código activo; no incluyen los datos de tu método de pago (esos los gestiona Google Play).</p>
+<p>Si además realizas una compra Premium con un código de creador activo, se envían los datos de esa compra (identificador del producto, comprobante de compra de Google Play, importe y moneda) a una función de servidor (Firebase Cloud Functions) que verifica la compra con Google Play. Solo una primera compra efectivamente cobrada acredita $20 MXN al creador; una prueba gratis, un pago pendiente o una simple activación no generan comisión. No recibimos los datos de tu método de pago, que gestiona Google Play.</p>
 </section>
 
 <section class="legal-section">
