@@ -46,7 +46,14 @@ const PREMIUM_PRODUCT_IDS = new Set([
 ]);
 // Pago único por la primera compra atribuida al creador. La venta puede ocurrir en
 // cualquier moneda; la deuda con el creador se liquida en MXN y no depende del cambio.
-const CREATOR_COMMISSION_MXN_MICROS = 20_000_000;
+// Importe fijo por plan (14-nov-2026): $20 MXN si la venta es mensual, $100 MXN si es anual.
+const CREATOR_COMMISSION_MONTHLY_MXN_MICROS = 20_000_000;
+const CREATOR_COMMISSION_YEARLY_MXN_MICROS = 100_000_000;
+function commissionMicrosFor(productId) {
+  return productId.startsWith("dragodocs_premium_yearly")
+    ? CREATOR_COMMISSION_YEARLY_MXN_MICROS
+    : CREATOR_COMMISSION_MONTHLY_MXN_MICROS;
+}
 
 // Cliente autenticado de la API de Google Play (usa las credenciales
 // por defecto de la Cloud Function; esa cuenta de servicio debe estar
@@ -177,7 +184,7 @@ exports.registerAffiliatePurchase = onCall(
     }
     priceMicros = Number(priceMicros) || 0;
     currency = currency || "MXN";
-    const commissionMicros = CREATOR_COMMISSION_MXN_MICROS;
+    const commissionMicros = commissionMicrosFor(productId);
 
     const purchaseTime = Timestamp.fromMillis(verified.purchaseTimeMillis || Date.now());
 
