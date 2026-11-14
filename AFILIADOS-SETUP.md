@@ -112,8 +112,9 @@ Firebase Console → **App Check**:
 ## 8) Crear los **productos con descuento** en Play Console
 
 Los planes Premium son **suscripción mensual y anual** (no hay compra única).
-Google Play tiene **precios fijos**: para dar $20 MXN de descuento hay que crear
-la variante rebajada y revisar sus precios regionales en Play Console.
+Google Play tiene **precios fijos**: para dar el descuento (mensual $170 → **$150**, anual
+$1,800 → **$1,500**) hay que crear la variante rebajada con ese precio y revisar sus precios
+regionales en Play Console.
 
 1. Play Console → tu app → **Monetización → Suscripciones**.
 2. Duplica tu suscripción con un ID nuevo y el **precio ya rebajado**, p. ej.:
@@ -123,8 +124,8 @@ la variante rebajada y revisar sus precios regionales en Play Console.
    (campo `discountProductId`, paso 9).
    - Si un creador **no** debe dar descuento (solo cuenta sus ventas), deja `discountProductId` vacío.
 
-La comisión no es porcentual: la Cloud Function registra **$20 MXN una sola vez**, solo
-cuando la primera compra ya fue cobrada. Pruebas gratis y pagos pendientes no cuentan.
+La comisión no es porcentual: la Cloud Function registra una sola vez **$20 MXN** (plan
+mensual) o **$100 MXN** (plan anual), solo cuando la primera compra ya fue cobrada. Pruebas gratis y pagos pendientes no cuentan.
 
 ---
 
@@ -148,7 +149,7 @@ node scripts/admin-create-affiliate.js \
   --discountProduct dragodocs_premium_yearly_desc
 ```
 
-- La comisión queda fija en $20 MXN por primera compra pagada.
+- La comisión es fija por primera compra pagada: $20 MXN mensual, $100 MXN anual.
 - `--discount` es informativo · `--discountProduct` = ID del producto rebajado.
 - Omite `--discountProduct` si ese creador solo da comisión sin bajar el precio.
 - Vuelve a ejecutarlo con el mismo `--code` para **actualizar** al creador.
