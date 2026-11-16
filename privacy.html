@@ -78,7 +78,7 @@
 <main id="main-content" class="page-content">
 <div class="container">
 <article class="legal-content">
-<span class="legal-last-updated">Última actualización: 14 de noviembre de 2026</span>
+<span class="legal-last-updated">Última actualización: 16 de noviembre de 2026</span>
 
 <section class="legal-section">
 <h2>1. Introducción</h2>
@@ -99,9 +99,10 @@
 
 <section class="legal-section">
 <h2>4. Funciones de Inteligencia Artificial (Gemini)</h2>
-<p>Cuando usas el asistente de IA (chat, la burbuja de IA del editor, "Convertir con IA" o la generación de imágenes), el contenido que envías se procesa mediante los servicios de IA de Google —Gemini a través de Firebase AI Logic— para generar la respuesta. Antes de usar cualquier función de IA, DragoDocs AI te pedirá tu consentimiento informado; puedes negarte y seguir usando las funciones locales de la app.</p>
-<p>Según la función, se puede enviar a Google: el texto de tu documento (al pedir a la IA que trabaje sobre un Word, Excel o PowerPoint abierto), el archivo (PDF, imagen) o la foto que adjuntes al chat o a la burbuja de IA, imágenes de las páginas del documento (al usar "Convertir con IA"), y el texto que escribes en cada mensaje o instrucción.</p>
+<p>Cuando usas el asistente de IA (chat, la burbuja de IA del editor o la generación de imágenes), el contenido que envías se procesa mediante los servicios de IA de Google —Gemini a través de Firebase AI Logic— para generar la respuesta. La primera vez que usas la IA, DragoDocs AI te explica qué se envía y te pide permiso; puedes negarte y seguir usando las funciones locales de la app, y retirar el permiso después en Ajustes › Aviso de Inteligencia Artificial.</p>
+<p>Según la función, se puede enviar a Google: el texto de tu documento (al pedir a la IA que trabaje sobre un Word, Excel o PowerPoint abierto), el archivo (PDF, imagen) o la foto que adjuntes al chat o a la burbuja de IA, y el texto que escribes en cada mensaje o instrucción.</p>
 <p>La IA es la única función por la que sale contenido de tus documentos, y siempre requiere una acción explícita tuya. Si nunca usas la IA, ningún documento sale de tu teléfono.</p>
+<p>Si reportas una respuesta de la IA (botón de bandera en el chat), se guarda en Firebase Firestore el texto de esa respuesta, el motivo que elegiste y la versión de la app, sin tu nombre ni tu correo. Lo usamos solo para revisar el reporte y mejorar las respuestas.</p>
 </section>
 
 <section class="legal-section">
@@ -139,7 +140,7 @@
 <h2>11. Permisos de la aplicación</h2>
 <p>DragoDocs AI solicita únicamente los permisos necesarios para su funcionamiento:</p>
 <ul>
-<li><strong>Cámara:</strong> para escanear documentos físicos y tomar fotos para la IA.</li>
+<li><strong>Cámara:</strong> para el lector de códigos QR, la cámara de respaldo del escáner y las fotos que adjuntas a la IA. El escáner de documentos es el de Google (ML Kit): procesa las imágenes en el teléfono, puede descargar sus componentes la primera vez y envía a Google métricas técnicas de funcionamiento.</li>
 <li><strong>Acceso a archivos (MANAGE_EXTERNAL_STORAGE):</strong> para listar, abrir, editar, convertir y guardar tus documentos de Office y PDF en el dispositivo — es la función principal de la app.</li>
 <li><strong>Internet:</strong> para funciones de IA, anuncios y actualizaciones.</li>
 </ul>
