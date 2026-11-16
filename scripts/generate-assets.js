@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const ROOT = path.resolve(__dirname, '..');
-const SOURCE = path.join(ROOT, 'ChatGPT Image 8 jul 2026, 19_26_09.png');
+const SOURCE = path.join(ROOT, 'logo-fuente.png');
 const OUT_DIR = path.join(ROOT, 'assets', 'images');
 
 if (!fs.existsSync(OUT_DIR)) fs.mkdirSync(OUT_DIR, { recursive: true });

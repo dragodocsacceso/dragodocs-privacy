@@ -21,7 +21,7 @@ const include = [
   'package.json',
   'assets',
   'scripts',
-  'ChatGPT Image 8 jul 2026, 19_26_09.png'
+  'logo-fuente.png'
 ];
 
 const exclude = [
