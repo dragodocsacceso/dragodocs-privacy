@@ -288,8 +288,8 @@ function demoData() {
     purchases.push({
       product: products[i % products.length],
       code: 'DRAGO10', affiliateUid: 'demo',
-      // Comisión fija de $20 MXN por primera compra pagada.
-      commissionMicros: 20000000,
+      // Comisión fija por primera compra pagada: $200 MXN el anual y $20 MXN el mensual.
+      commissionMicros: isYearly ? 200000000 : 20000000,
       commissionCurrency: 'MXN',
       currency: 'MXN',
       status: i % 5 === 0 ? 'pending' : (i % 7 === 0 ? 'refunded' : 'paid'),
